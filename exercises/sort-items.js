@@ -1,7 +1,7 @@
 /**
  * SORTING NODES WITHIN A CONTAINER
  * Please, make sure to read the following files in the exercises-info folder before you start
- * * "02 SortingNode.md" 
+ * * "02 SortingNode.md"
 */
 
 /**
@@ -12,8 +12,8 @@
  */
 
 // Your code goes here...
-
-
+const allItems = document.querySelectorAll('.item');
+console.log(allItems);
 
 /**
  * @task
@@ -23,7 +23,8 @@
  */
 
 // Your code goes here...
-
+const sortBtn = document.querySelectorAll('.sortBtn');
+console.log(sortBtn);
 
 
 /**
@@ -38,6 +39,13 @@
  */
 
 // Your code goes here...
+const mainSort = document.querySelector('#main');
+console.log(mainSort)
+
+const sortData = (asc) => {
+  mainSort.allItems.sort(--i);
+}
+sortData();
 
 
 
@@ -50,5 +58,3 @@
  */
 
 // Your code goes here...
-
-
