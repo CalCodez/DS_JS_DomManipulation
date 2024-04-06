@@ -12,20 +12,18 @@
  */
 
 // Your code goes here...
-const allItems = document.querySelectorAll('.item');
+let allItems = document.querySelectorAll('.item');
 console.log(allItems);
 
 /**
  * @task
- * Select all sort buttons by class of "sortBtn" as a NodeList.
+ * Sele;ct all sort buttons by class of "sortBtn" as a NodeList.
  * Store them in the sortBtn variable
  * Example: const sortBtn = <Your code>;
  */
 
 // Your code goes here...
 const sortBtn = document.querySelectorAll('.sortBtn');
-console.log(sortBtn);
-
 
 /**
  * @task
@@ -39,13 +37,20 @@ console.log(sortBtn);
  */
 
 // Your code goes here...
-const mainSort = document.querySelector('#main');
-console.log(mainSort)
+const mainContainer = Array.from(allItems);
+console.log(mainContainer)
+const sortData = (asc, desc) => {
+  if (asc.innerHtml < desc.innerHtml) return 1;
+  else if (asc.inneerHtml > desc.inneerHtml) return -1;
+  else return 0;
 
-const sortData = (asc) => {
-  mainSort.allItems.sort(--i);
 }
-sortData();
+mainContainer.sort(sortData);
+
+//mainContainer.forEach((item) => {
+//  mainContainer.append(item);
+//});
+
 
 
 
@@ -58,3 +63,25 @@ sortData();
  */
 
 // Your code goes here...
+
+for (const elm of sortBtn) {
+  elm.addEventListener('click', function () {
+    elm[0] = asc.inneerHtml.sortData();
+    elm[1] = desc.innerHtml.sortData();
+    sortData();
+  });
+
+
+}
+
+
+
+//for (const elm of switcher) {
+//  elm.addEventListener('click', function () {
+//    const toggle = this.dataset.toggle;
+//    //set active state
+//    setActive(elm, switcherBtn);
+//    setTheme(toggle);
+
+//  })
+//}
