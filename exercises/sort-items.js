@@ -24,7 +24,7 @@ console.log(allItems);
 
 // Your code goes here...
 const sortBtn = document.querySelectorAll('.sortBtn');
-
+console.log(sortBtn)
 /**
  * @task
  * Create a sortData function that follows the list of requirements:
@@ -63,25 +63,26 @@ mainContainer.sort(sortData);
  */
 
 // Your code goes here...
+for (const elem of sortBtn) {
+  elem.addEventListener('click', function () {
+    elem[0] = asc.sort();
 
-for (const elm of sortBtn) {
-  elm.addEventListener('click', function () {
-    elm[0] = asc.inneerHtml.sortData();
-    elm[1] = desc.innerHtml.sortData();
-    sortData();
-  });
-
-
+  })
 }
 
 
-
-//for (const elm of switcher) {
-//  elm.addEventListener('click', function () {
-//    const toggle = this.dataset.toggle;
-//    //set active state
-//    setActive(elm, switcherBtn);
-//    setTheme(toggle);
-
+//for (const link of filterLink) {
+//  link.addEventListener('click', function () {
+//    setActive(link, '.filter-link');
+//    const filter = this.dataset.filter;
+//    portfolioItems.forEach((card) => {
+//      if (filter === 'all') {
+//        card.style.display = 'block';
+//      } else if (card.dataset.item === filter) {
+//        card.style.display = 'block';
+//      } else {
+//        card.style.display = 'none';
+//      }
+//    })
 //  })
 //}
