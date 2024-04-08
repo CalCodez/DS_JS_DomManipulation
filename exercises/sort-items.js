@@ -12,19 +12,20 @@
  */
 
 // Your code goes here...
-let allItems = document.querySelectorAll('.item');
-console.log(allItems);
+const allItems = document.querySelectorAll('.item');
+//**console.log(allItems);
 
 /**
  * @task
- * Sele;ct all sort buttons by class of "sortBtn" as a NodeList.
+ * Selelct all sort buttons by class of "sortBtn" as a NodeList.
  * Store them in the sortBtn variable
  * Example: const sortBtn = <Your code>;
  */
 
 // Your code goes here...
 const sortBtn = document.querySelectorAll('.sortBtn');
-console.log(sortBtn)
+//^^console.log(sortBtn)
+
 /**
  * @task
  * Create a sortData function that follows the list of requirements:
@@ -37,19 +38,34 @@ console.log(sortBtn)
  */
 
 // Your code goes here...
-const mainContainer = Array.from(allItems);
-console.log(mainContainer)
-const sortData = (asc, desc) => {
-  if (asc.innerHtml < desc.innerHtml) return 1;
-  else if (asc.inneerHtml > desc.inneerHtml) return -1;
-  else return 0;
+const sortData = (direction) => {
+  const parentcontainer = document.getElementById('main');
+  const sortContainer = Array.from(allItems);
 
+  sortContainer.sort((a, b) => {
+    const idA = a.dataset.id;
+    const idB = b.dataset.id;
+    if (direction === 'asc') {
+      return idA - idB;
+    } else if (direction == 'desc') {
+      return idB - idA;
+    } else {
+      return 0;
+    }
+
+  });
+
+  parentcontainer.innerHTML = '';
+  sortContainer.forEach((item => {
+    parentcontainer.appendChild(item);
+  }))
 }
-mainContainer.sort(sortData);
+sortData()
 
-//mainContainer.forEach((item) => {
-//  mainContainer.append(item);
-//});
+
+
+
+
 
 
 
@@ -63,26 +79,13 @@ mainContainer.sort(sortData);
  */
 
 // Your code goes here...
-for (const elem of sortBtn) {
-  elem.addEventListener('click', function () {
-    elem[0] = asc.sort();
 
-  })
-}
+sortBtn.forEach(button => {
+  button.addEventListener('click', function () {
+    // Get the value of the sortdir property from the button's dataset
+    const sortDirection = this.dataset.sortdir;
 
-
-//for (const link of filterLink) {
-//  link.addEventListener('click', function () {
-//    setActive(link, '.filter-link');
-//    const filter = this.dataset.filter;
-//    portfolioItems.forEach((card) => {
-//      if (filter === 'all') {
-//        card.style.display = 'block';
-//      } else if (card.dataset.item === filter) {
-//        card.style.display = 'block';
-//      } else {
-//        card.style.display = 'none';
-//      }
-//    })
-//  })
-//}
+    // Call the sortData function with the sort direction obtained from the button's dataset
+    sortData(sortDirection);
+  });
+});
