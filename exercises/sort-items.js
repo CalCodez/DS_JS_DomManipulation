@@ -38,29 +38,24 @@ const sortBtn = document.querySelectorAll('.sortBtn');
  */
 
 // Your code goes here...
-const sortData = (direction) => {
-  const parentcontainer = document.getElementById('main');
-  const sortContainer = Array.from(allItems);
+function sortData(direction) {
+  let container = document.getElementById('main');
+  let allItems = container.children;
+  let itemsArray = Array.from(allItems);
 
-  sortContainer.sort((a, b) => {
-    const idA = a.dataset.id;
-    const idB = b.dataset.id;
+  itemsArray.sort(function (a, b) {
     if (direction === 'asc') {
-      return idA - idB;
-    } else if (direction == 'desc') {
-      return idB - idA;
-    } else {
-      return 0;
+      return parseInt(a.id) - parseInt(b.id);
+    } else if (direction === 'desc') {
+      return parseInt(b.id) - parseInt(a.id);
     }
-
   });
 
-  parentcontainer.innerHTML = '';
-  sortContainer.forEach((item => {
-    parentcontainer.appendChild(item);
-  }))
+  itemsArray.forEach(function (item) {
+    container.appendChild(item);
+  });
+
 }
-sortData()
 
 
 
@@ -80,12 +75,9 @@ sortData()
 
 // Your code goes here...
 
-sortBtn.forEach(button => {
-  button.addEventListener('click', function () {
-    // Get the value of the sortdir property from the button's dataset
-    const sortDirection = this.dataset.sortdir;
-
-    // Call the sortData function with the sort direction obtained from the button's dataset
-    sortData(sortDirection);
+sortBtn.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    let direction = btn.dataset.sortdir;
+    sortData(direction);
   });
 });
