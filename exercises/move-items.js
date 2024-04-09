@@ -47,22 +47,19 @@ const favs = document.getElementById('#favs');
  */
 
 // Your code goes here
-const updateCollection = ((id, direction) => {
-  if (Array.from(main).includes(id)) {
-    direction.Array.from(favs).push(id);
-  }
-  if (id.style.icon === 'fa-heart-circle-plus') {
-    id.style.icon === 'fa-heart-crack';
-  }
-  else if (Array.from(favs).includes(id)) {
-    direction.Array.from(main).push(id);
-  }
-  if (id.style.icon === 'fa-heart-crack') {
+function updateCollections(id, direction) {
+  const item = document.getElementById(id);
+  if (item && (direction === 'toMain' || direction === 'toFavs')) {
+    const container = direction === 'toMain' ? document.getElementById('main') : document.getElementById('favs');
+    const iconClass = direction === 'toMain' ? 'fa-heart-circle-plus' : 'fa-heart-crack';
 
-    id.style.icon === 'fa-heart-circle-plus'
-  }
-});
+    const iconElement = item.querySelector('i');
+    iconElement.classList.remove('fa-heart-circle-plus', 'fa-heart-crack');
+    iconElement.classList.add(iconClass);
 
+    container.appendChild(item);
+  }
+};
 
 
 /**
@@ -80,3 +77,12 @@ const updateCollection = ((id, direction) => {
  */
 
 // Your code goes here...
+
+allItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const parentId = item.parentElement.id;
+    const itemId = parseInt(item.id);
+    const direction = parentId === 'main' ? 'toFavs' : 'toMain';
+    updateCollections(itemId, direction);
+  });
+});

@@ -38,3 +38,45 @@
  */
 
 // Your code goes here...
+document.addEventListener('DOMContentLoaded', function () {
+  const container = document.querySelector('.cardsContainer');
+
+  function setRedBackground(id) {
+    const item = document.getElementById(id);
+    item.style.backgroundColor = "red";
+  }
+  function addToFavorites(id) {
+    localStorage.setItem(id, 'true');
+  }
+
+  function removeFromFavorites(id) {
+    localStorage.removeItem(id);
+  }
+  function updateItem(event) {
+    const item = event.target.closest('.card');
+    if (!item) return;
+
+
+    const id = item.id;
+    const isFavorite = localStorage.getItem(id) === 'true';
+
+    if (!isFavorite) {
+      setRedBackground(id);
+      addToFavorites(id);
+    } else {
+      item.style.backgroundColor = 'white';
+      removeFromFavorites(id);
+    }
+
+  }
+  container.addEventListener('click', updateItem);
+
+  function setRedBackgroundForFavorites() {
+    for (let i = 0; i < localStorage.length; i++) {
+      const id = localStorage.key(i);
+      setRedBackground(id)
+    }
+  }
+  setRedBackgroundForFavorites();
+
+});

@@ -13,7 +13,6 @@
 
 // Your code goes here...
 const allItems = document.querySelectorAll('.item');
-//**console.log(allItems);
 
 /**
  * @task
@@ -24,7 +23,6 @@ const allItems = document.querySelectorAll('.item');
 
 // Your code goes here...
 const sortBtn = document.querySelectorAll('.sortBtn');
-//^^console.log(sortBtn)
 
 /**
  * @task
@@ -56,13 +54,6 @@ function sortData(direction) {
   });
 
 }
-
-
-
-
-
-
-
 
 
 /**
