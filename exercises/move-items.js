@@ -12,7 +12,7 @@
  */
 
 // Your code goes here...
-
+const allItems = document.querySelectorAll('.item')
 
 
 /**
@@ -23,7 +23,7 @@
  * */
 
 // Your code goes here
-
+const main = document.getElementById('#main');
 
 
 /**
@@ -34,7 +34,7 @@
  */
 
 // Your code goes here
-
+const favs = document.getElementById('#favs');
 
 
 /**
@@ -47,6 +47,21 @@
  */
 
 // Your code goes here
+const updateCollection = ((id, direction) => {
+  if (Array.from(main).includes(id)) {
+    direction.Array.from(favs).push(id);
+  }
+  if (id.style.icon === 'fa-heart-circle-plus') {
+    id.style.icon === 'fa-heart-crack';
+  }
+  else if (Array.from(favs).includes(id)) {
+    direction.Array.from(main).push(id);
+  }
+  if (id.style.icon === 'fa-heart-crack') {
+
+    id.style.icon === 'fa-heart-circle-plus'
+  }
+});
 
 
 
@@ -65,5 +80,3 @@
  */
 
 // Your code goes here...
-
-
